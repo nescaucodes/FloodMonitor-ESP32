@@ -2,8 +2,15 @@
 
 body {
   font-family: 'Space Grotesk', sans-serif;
+  font-size: 26px;
   color: white;
   background-color: black;
+  /*
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  */
 }
 
 .titulo {
@@ -12,10 +19,28 @@ body {
 }
 
 .caixa {
-  width: 500px;
-  margin: 100px auto;
+  width: 500px auto;
+  margin: 50px auto;
+  padding: 25px;
+  text-align: center;
+  align-items: center;
+  border: 1px solid;
+  border-radius: 16px;
+}
+
+.caixa2 {
+  margin: 20px auto;
+  padding: 50px;
+  border: 1px solid;
+  border-radius: 16px;
+  text-align: center;
+}
+
+.card1 {
+  width: 100px auto;
+  margin-bottom: 100px;
   padding: 26px;
-  display: flex;
+  text-align: center;
   align-items: center;
   border: 1px solid;
   border-radius: 16px;
