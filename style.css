@@ -13,6 +13,12 @@ body {
   */
 }
 
+.header {
+  display: flex;
+  border: solid 1px;
+  background-color: pink;
+}
+
 .titulo {
   text-align: center;
   margin-top: 100px;
@@ -44,4 +50,24 @@ body {
   align-items: center;
   border: 1px solid;
   border-radius: 16px;
+}
+
+.button-header button {
+  margin-left: auto;
+  border: none;
+  color: white;
+  background-color: transparent;
+  margin-left: 100px;
+  width: 70vw
+}
+
+
+/*Parte para os spans*/
+.span-header-title {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  color: black;
+  width: 50px;
+  font-size: 22px;
 }
