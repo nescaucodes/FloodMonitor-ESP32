@@ -16,23 +16,13 @@
     </span>
 
     <div class="button-header">
-      <button>
-        Início
-      </button>
-
-      <button>
-        Sensores
-      </button>
-
-      <button>
-        Sobre
-      </button>
+      <a href="#secao-inicio"><button>Início</button></a>
+      <a href="#secao-sobre"><button>Sobre</button></a>
     </div>
-    
   </div>
 
   <div class="titulo">
-  <h1>
+  <h1 id="secao-inicio">
     Monitor de enchentes
   </h1>
 
@@ -46,6 +36,8 @@
     <p><strong>Nível do Rio - Monitoramento</strong></p>
 
     <div class="caixa2">
+      <h2 style="font-size: 48px; margin: 10px 0;" id="nivel-atual">Carregando...</h2>
+<!--
       <p>
         Nível máximo:
         0,02 mm (Horário)
@@ -55,21 +47,17 @@
         Nível minimo:
         0,00 mm (Horário)
       </p>
+-->      
     </div>
 
-    <p>Nível Atual: <strong style="color: green;">Seguro</strong> --- Atualizado as 11:20</p>
+    <p>Status Atual: <strong id="status-texto" style="color: gray;">Aguardando sensor...</strong></p>
 
   </div>
 
   <div class="caixa2">
-    <p>
-      Sobre o projeto
-    </p>
+    <p id="secao-sobre"><strong>Sobre o projeto</strong></p>
 
-    <div class="caixa2">
-      <p>
-        Como funciona:
-      </p>
+    <div class="container-cards">
 
       <div class="card1">
         <strong>Sensores em tempo real</strong>
@@ -80,15 +68,13 @@
       </div>
 
       <div class="card1">
-        <strong>Título 2</strong>
+        <strong>Totem Informativo</strong>
 
         <p>
-          Com o uso do ...
+          O totem física indica visualmente o perigo para a população local atráves de alertas luminosos.
         </p>
       </div>
-      
     </div>
-
   </div>
 </body>
 </html>

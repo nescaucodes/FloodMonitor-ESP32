@@ -4,70 +4,109 @@ body {
   font-family: 'Space Grotesk', sans-serif;
   font-size: 26px;
   color: white;
-  background-color: black;
-  /*
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  */
+  background-color: #0f0f11;
+  margin: 0;
+  padding: 0;
 }
 
 .header {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
   border: solid 1px;
-  background-color: pink;
+  color: white;
+  background-color: #1a1a1e;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+#secao-inicio {
+  scroll-margin-top: 200px;
+}
+
+/*
+.header:hover {
+  transform: scale(1.2);
+}
+*/
+
+.span-header-title {
+  font-weight: bold;
+  color: #a0a0a5;;
+  font-size: 22px;
 }
 
 .titulo {
   text-align: center;
   margin-top: 100px;
+  padding: 0 20px;
+}
+
+.titulo h1 {
+  font-size: 52px;
+  margin-bottom: 10px;
 }
 
 .caixa {
-  width: 500px auto;
-  margin: 50px auto;
+  width: 500px;
+  margin: 40px auto;
   padding: 25px;
   text-align: center;
-  align-items: center;
-  border: 1px solid;
+  border: 1px solid #2d2d34;
   border-radius: 16px;
+  background-color: #16161a;
 }
 
 .caixa2 {
-  margin: 20px auto;
-  padding: 50px;
-  border: 1px solid;
-  border-radius: 16px;
+  max-width: 800px;
   text-align: center;
+  margin: 20px auto;
+  padding: 30px;
+  border: 1px solid #2d2d34;
+  border-radius: 16px;
+  background-color: #16161a;
+}
+
+.container-cards {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 20px;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .card1 {
-  width: 100px auto;
-  margin-bottom: 100px;
+
+  min-width: 250px;
+  max-width: 350px;
   padding: 26px;
-  text-align: center;
-  align-items: center;
-  border: 1px solid;
+  text-align: left;
+  border: 1px solid #2d2d34;
   border-radius: 16px;
+  background-color: #16161a;
+}
+
+.card1 p {
+  font-size: 26px;
+  color: #a0a0a5;  
 }
 
 .button-header button {
+  font-size: 16px;
   margin-left: auto;
   border: none;
   color: white;
   background-color: transparent;
-  margin-left: 100px;
-  width: 70vw
+  margin-left: 20px;
+  cursor: pointer;
+  transition: 1.6s;
 }
 
-
-/*Parte para os spans*/
-.span-header-title {
-  display: flex;
-  align-items: center;
-  gap: 30px;
-  color: black;
-  width: 50px;
-  font-size: 22px;
+.button-header button:hover {
+  transition: 0.6s;
+  color: rgba(140, 132, 132, 0.609);
 }
