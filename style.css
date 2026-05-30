@@ -15,12 +15,30 @@ body {
   align-items: center;
   padding: 20px 40px;
   border: solid 1px;
+  border-radius: 30px;
   color: white;
   background-color: #1a1a1e;
   transition: transform 0.3s ease, background-color 0.3s ease;
   position: sticky;
   top: 0;
   z-index: 100;
+}
+
+.button-header a {
+  font-size: 16px;
+  margin-left: auto;
+  border: none;
+  color: white;
+  background-color: transparent;
+  margin-left: 20px;
+  cursor: pointer;
+  transition: 1.6s;
+  text-decoration: none;
+}
+
+.button-header a:hover {
+  transition: 0.6s;
+  color: rgba(140, 132, 132, 0.609);
 }
 
 #secao-inicio {
@@ -80,7 +98,6 @@ body {
 }
 
 .card1 {
-
   min-width: 250px;
   max-width: 350px;
   padding: 26px;
@@ -88,6 +105,12 @@ body {
   border: 1px solid #2d2d34;
   border-radius: 16px;
   background-color: #16161a;
+  transition: padding 1s ease, transform 0.3s ease;
+}
+
+.card1 strong {
+  display: block;
+  text-align: center;
 }
 
 .card1 p {
@@ -95,18 +118,7 @@ body {
   color: #a0a0a5;  
 }
 
-.button-header button {
-  font-size: 16px;
-  margin-left: auto;
-  border: none;
-  color: white;
-  background-color: transparent;
-  margin-left: 20px;
-  cursor: pointer;
-  transition: 1.6s;
-}
-
-.button-header button:hover {
-  transition: 0.6s;
-  color: rgba(140, 132, 132, 0.609);
+.card1:hover {
+  transform: scale(1.05);
+  padding: 50px;
 }
