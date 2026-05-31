@@ -3,14 +3,16 @@
 <head>
   <link rel="icon" type="image/png" href="iconbridge.png">
 
+  <link rel="stylesheet" href="style.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>a { color: white; text-decoration: none; }</style>
 
   <title>Nível do Rio - Monitoramento</title>
-
-  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="header">
@@ -22,7 +24,9 @@
 
     <div class="button-header">
       <a href="#secao-inicio">Início</a>
+      <a href="#secao-graficos">Gráficos</a>
       <a href="#secao-sobre">Sobre</a>
+      <a href="#secao-repo">Repositórios</a>
     </div>
   </div>
 
@@ -60,6 +64,16 @@
   </div>
 
   <div class="caixa2">
+    <h1 class="titulo2" id="secao-graficos">Gráfico da Região</h1>
+
+    <div class="container-cards-follow">
+      <canvas id="grafico1"></canvas>
+    </div>
+
+  </div>
+
+
+  <div class="caixa3">
     <p id="secao-sobre"><strong>Sobre o projeto</strong></p>
 
     <div class="container-cards">
@@ -106,8 +120,9 @@
     </div>
   </div>
 
-  <div class="caixa3">
-    <h1 class="titulo2">Siga a página do projeto!</h1>
+
+  <div class="caixa4">
+    <h1 class="titulo2" id="secao-repo">Repositórios do Projeto</h1>
 
     <div class="container-cards-follow">
 
@@ -115,7 +130,7 @@
         <div class="card1-1">
           <img src="\images\html\GitHub_Logo.png" width="100px">
 
-          <p><strong>Projeto no GitHub</strong></p>
+          <p><strong>Código-fonte no GitHub</strong></p>
         </div>
       </a>
       <a href="https://www.tinkercad.com/things/eMpM5Q7RAYk-projeto-maquete-arduino-esp32?sharecode=A8mn2tvAtltUctij2ptA3kyg0sxtIACUXdO5tn30hPM" target="_blank">

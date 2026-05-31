@@ -24,3 +24,31 @@ async function buscarDados() {
 setInterval(buscarDados, 2000);
 
 buscarDados();
+
+
+// Testes com gráficos
+  const ctx = document.getElementById('grafico1');
+
+  // Testes com variáveis
+  let labelsX = ["Dia 1", "Dia 2", "Dia 3", "Dia 4", "Dia 5", "Dia 6", "Dia 7"];
+
+  let valores = [10, 20, 30, 40, 50, 60, 70];
+
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: labelsX,
+      datasets: [{
+        label: `Centímetros`,
+        data: valores,
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
