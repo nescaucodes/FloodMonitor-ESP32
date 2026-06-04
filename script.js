@@ -3,7 +3,7 @@ let MostrouErro = false;
 async function buscarDados() {
   try {
     // Espera o fetch(vai até o endereço e busca a informação) ir até o ESP32 e trazer a resposta
-    const resposta = await fetch ('/dados'); 
+    const resposta = await fetch ('http://192.168.4.1/dados'); 
 
     // Espera converter o texto recebido JSON em JS normal
     const dados = await resposta.json();
