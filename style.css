@@ -161,7 +161,7 @@ body {
 .caixa4 {
   max-width: 1000px;
   text-align: center;
-  margin: 20px auto;
+  margin: 40px auto;
   padding: 30px;
   border: 1px solid #2d2d34;
   border-radius: 16px;
@@ -193,7 +193,6 @@ body {
   justify-content: center;
   margin-top: 20px;
   align-items: center;
-  flex-wrap: wrap;
 }
 
 /*Gráficos*/
@@ -214,14 +213,28 @@ body {
   background-color: #16161a;
 }
 
+.card2 {
+  text-align: left;
+  background-color: #16161a;
+}
+
 .botao-contato {
+  font-family: 'Montserrat';
+  width: 150px;
+  height: 50px;
   display: flex;
-  align-content: center;
+  justify-content: center;
+  align-items: center;
   color: white;
   border: none;
   border-radius: 16px;
   font-size: 18px;
   background-color: rgb(43, 43, 174);
+  margin: 10px auto;
+}
+
+.botao-contato:hover {
+  cursor: pointer;
 }
 
 footer {

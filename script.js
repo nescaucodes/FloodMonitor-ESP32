@@ -1,5 +1,17 @@
 let MostrouErro = false;
 
+let ultimaLeitura = Date.now() - 10000;
+
+const frames = ['Conectando.', 'Conectando..', 'Conectando...'];
+let frameAtual = 0;
+let animacao = null;
+
+animacao = setInterval(() => {
+        document.getElementById('nivel-atual').textContent = frames[frameAtual];
+        frameAtual = (frameAtual + 1) % frames.length;
+      }, 400);
+      
+
 async function buscarDados() {
   try {
     // Espera o fetch(vai até o endereço e busca a informação) ir até o ESP32 e trazer a resposta
@@ -9,21 +21,43 @@ async function buscarDados() {
     const dados = await resposta.json();
 
     document.getElementById('nivel-atual').innerHTML = dados.distancia + " cm";
+
+    document.getElementById('metrica-atual').innerHTML = dados.distancia + " cm";
+
+    ultimaLeitura = Date.now();// Já inicia desconectado
+
     MostrouErro = false;
+
+    clearInterval(animacao);
 
   } catch (erro) {
     if (!MostrouErro) {
       console.log("Erro de conexão: ESP32 desconectado", erro);
-      document.getElementById('nivel-atual').innerHTML = "Erro de conexão...";
       MostrouErro = true; 
     }
   }
 }
 
+
 // Executa a função a cada 2 segundos
 setInterval(buscarDados, 2000);
 
 buscarDados();
+
+// Status Atual: Ligado... / Desligado...
+setInterval(function() {
+  const agora = Date.now()
+  const diferenca = agora - ultimaLeitura;
+
+  if (diferenca < 5000) {
+    document.getElementById('status-texto2').textContent = 'Ligado...';
+    document.getElementById('status-texto2').style.color = '#097969';
+  } else {
+    document.getElementById('status-texto2').textContent = 'Desligado...'
+    document.getElementById('status-texto2').style.color = '	#800020';
+  }
+
+}, 1000) // Repete a cada 1 segundo
 
 
 // Testes com gráficos
