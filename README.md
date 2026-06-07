@@ -1,8 +1,7 @@
-<div align="center">
-  <img src="./iconbridge.png" width="200"/>
-  # Monitor de Enchentes com ESP32
-  <h3>Flood Monitor with ESP32</h3>
-  <p>Visualize localmente em tempo real as medidas e variações do nível do rio atráves de sensores HC-SR04 por Arduino ESP32</p>
+<img src="./iconbridge.png" width="200"/>
+# Monitor de Enchentes com ESP32
+  ## Flood Monitor with ESP32
+  Visualize localmente em tempo real as medidas e variações do nível do rio atráves de sensores HC-SR04 por Arduino ESP32
   
 ## Funcionalidades:
   ### Sensor ultrassônico
