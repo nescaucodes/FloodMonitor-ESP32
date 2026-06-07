@@ -15,8 +15,14 @@ const long intervaloBLE = 2000; // Guarda o milissegundo do último aviso
 
 
 void taskBLE(void * parameter) {
+  //Aguarda o BLE inicializar completamente
+  delay(1000); 
+
   for (;;) {
     distanciaSimulada = random(10, 67);
+
+    // Monta o texto que será enviado ao serial monitor
+    Serial.println("Nível do Rio: " + String(distanciaSimulada) + " cm");
 
     // Monta o texto que será enviado ao celular
     String valor = "Nível do Rio: " + String(distanciaSimulada) + " cm";
@@ -33,8 +39,17 @@ void taskBLE(void * parameter) {
 // Callback automatico quando um celular desconecta do BLE
 class ServerCallbacks: public NimBLEServerCallbacks {
   void onDisconnect(NimBLEServer* pServer) {
+
+    // aguarda estabilizar antes de reanunciar
+    delay(500);
+
+    // usa o servidor diretamente
+    pServer->startAdvertising();
+    
+/*
     // reinicia o anúnciio para reconexão
     NimBLEDevice::getAdvertising()->start();
+*/
   }
 };
 
@@ -88,6 +103,9 @@ void setup() {
   // Inicia o serviço
   pServico->start();
 
+  // Espera o serviço se estabilizar
+  delay(100);
+
   // Anuncia o dispositivo para celulares próximos
   NimBLEDevice::getAdvertising()->start(); // começa a anunciar o dispositivo
   Serial.println("BLE Ativo");
@@ -95,7 +113,7 @@ void setup() {
   server.on("/dados", enviarDadosSensor);
   server.begin();
 
-  xTaskCreatePinnedToCore(taskBLE, "BLE", 10000, NULL, 1, NULL, 0);
+  xTaskCreatePinnedToCore(taskBLE, "BLE", 20000, NULL, 1, NULL, 0);
 }
 
 /*
