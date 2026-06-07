@@ -17,6 +17,7 @@
 
 **⚠️Nota de Compatibilidade:** É um **projeto puramente baseado na plataforma Arduino**. Todo o firmware foi desenvolvido em C++ utilizando o framework oficial da Arduino, facilitando a portabilidade e modificação do código em outros módulos ESP32.
 
+---
   
 ## Funcionalidades:
   ### Telemetria com Sensor Ultrassônico
@@ -30,7 +31,7 @@
   ### Servidor de Dados por WI-FI + Bluetooth
   O sistema foi desenhado para garantir que a informação chegue por todos os meios possíveis, recebendo alertas diretamente no celular pela rede WI-FI e também Bluetooth.
   - **📶 WI-FI WebServer:** O Arduino cria um *Access Point* e cria uma API em um server local. O site utiliza esses dados em formato JSON atráves de requisiçõe assíncronas.
-  - **📱 Bluetooth Low Energy (BLE):** Atuando como canal de backup, transmite dados via protocolo [NimBLE-Arduino](https://github.com/h2zero/NimBLE-Arduino).
+  - **📱 Bluetooth Low Energy (BLE):** Atuando como canal de backup, transmite dados via protocolo NimBLE-Arduino.
 
 
   ### Dashboard Web
@@ -40,12 +41,14 @@
   - **Gráficos:** Faz uma média do nível daquela semana, contando com nível mínimo, máximo e atual.
 
 ---
-  ### Compilar a partir do código-fonte
-  # Requisitos
+  # Compilar a partir do código-fonte
+  ### Requisitos
   - Arduino IDE
   - Visual Studio Code
 
+  ---
+
   ### Bibliotecas / API's
-  [NimBLE-Arduino](https://github.com/h2zero/NimBLE-Arduino)).
+  [NimBLE-Arduino](https://github.com/h2zero/NimBLE-Arduino). [Chart.js](https://github.com/chartjs/Chart.js).
 
   
