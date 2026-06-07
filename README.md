@@ -1,10 +1,17 @@
 <div align="center">
   
 <img src="./iconbridge.png" width="200"/>
-<h1>Monitor de Enchentes com ESP32</h1>
-  <h3>Flood Monitor with ESP32</h3>
+<h1>Flood Monitor with ESP32</h1>
+<h3>Monitor de Enchentes com ESP32</h3>
+
   Visualize localmente em tempo real as medidas e variações do nível do rio atráves de sensores HC-SR04 por Arduino ESP32 
 </div>
+
+## Do que se trata o projeto?
+**Flood Monitor with ESP32** é um projeto escolar baseado em Arduino (ESP32) que tem como foco utilidade pública, acessibilidade e Smart City. 
+
+Com uma ideia de prevenção de desastres naturais através do monitoramento em tempo real do nível de rios/canais com alerta local e remoto em toda cidade.
+
   
 ## Funcionalidades:
   ### Sensor ultrassônico
