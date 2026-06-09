@@ -60,6 +60,15 @@ setInterval(function() {
 }, 1000) // Repete a cada 1 segundo
 
 
+// Modo para trocar de tema
+function toggleModo() {
+  document.body.classList.toggle('lightmode');
+  const img = document.querySelector('#btn-modo img');
+    img.src = document.body.classList.contains('lightmode') ? '/images/html/modes/lightmode.png' : '/images/html/modes/darkmode.png';
+}
+
+
+
 // Testes com gráficos
   const ctx = document.getElementById('grafico1');
 
