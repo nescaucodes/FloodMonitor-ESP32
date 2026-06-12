@@ -45,7 +45,7 @@ void loop() {
     digitalWrite(BUZZER_PIN, LOW);
 
     delay(1900); // completa os 2 segundos
- 
+
   } else {
     delay(100);
   }
