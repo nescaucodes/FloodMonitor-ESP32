@@ -6,6 +6,9 @@ const frames = ['Conectando.', 'Conectando..', 'Conectando...'];
 let frameAtual = 0;
 let animacao = null;
 
+let maxDia = localStorage.getItem('maxDia') ? parseFloat(localStorage.getItem('maxDia')) : 0;
+let minDia = localStorage.getItem('minDia') ? parseFloat(localStorage.getItem('minDia')) : Infinity;
+
 animacao = setInterval(() => {
         document.getElementById('nivel-atual').textContent = frames[frameAtual];
         frameAtual = (frameAtual + 1) % frames.length;
@@ -60,6 +63,20 @@ async function buscarDados() {
 
     // adiciona o valor no eixo y
     valores.push(dados.distancia);
+
+    if (dados.distancia > maxDia) {
+      maxDia = dados.distancia;
+      localStorage.setItem('maxDia', maxDia);
+    } 
+
+    if (dados.distancia < minDia) {
+      minDia = dados.distancia;
+      localStorage.setItem('minDia', minDia);
+    }
+
+    document.getElementById('metrica-max').innerHTML = `${maxDia} cm`;
+
+    document.getElementById('metrica-min').innerHTML = `${minDia} cm`;
 
     // se limita a 20 pontos para não sobrecarregar
     if (labelsX.length > 20) {
