@@ -10,6 +10,33 @@ animacao = setInterval(() => {
         document.getElementById('nivel-atual').textContent = frames[frameAtual];
         frameAtual = (frameAtual + 1) % frames.length;
       }, 400);
+
+// Primeiras conexões com dados reais
+const ctx = document.getElementById('grafico1');
+
+  // Testes com variáveis
+  let labelsX = [];
+
+  let valores = [];
+
+  const grafico = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: labelsX,
+      datasets: [{
+        label: `Centímetros`,
+        data: valores,
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
       
 
 async function buscarDados() {
@@ -26,6 +53,26 @@ async function buscarDados() {
 
     ultimaLeitura = Date.now();// Já inicia desconectado
 
+    // pega o horário atual como label
+    const agora = new Date().toLocaleTimeString();
+    // adiciona o hórario no eixo x
+    labelsX.push(agora);
+
+    // adiciona o valor no eixo y
+    valores.push(dados.distancia);
+
+    // se limita a 20 pontos para não sobrecarregar
+    if (labelsX.length > 20) {
+      // remove o mais antigo do inicio
+      labelsX.shift();
+      valores.shift();
+    }
+
+    // atuliza o gráfico
+    grafico.data.labels = labelsX;
+    grafico.data.datasets[0].data = valores;
+    grafico.update();
+
     MostrouErro = false;
 
     clearInterval(animacao);
@@ -37,7 +84,6 @@ async function buscarDados() {
     }
   }
 }
-
 
 // Executa a função a cada 2 segundos
 setInterval(buscarDados, 2000);
@@ -64,34 +110,5 @@ setInterval(function() {
 function toggleModo() {
   document.body.classList.toggle('lightmode');
   const img = document.querySelector('#btn-modo img');
-    img.src = document.body.classList.contains('lightmode') ? '/images/html/modes/lightmode.png' : '/images/html/modes/darkmode.png';
+    img.src = document.body.classList.contains('lightmode') ? 'images/html/modes/lightmode.png' : 'images/html/modes/darkmode.png';
 }
-
-
-
-// Testes com gráficos
-  const ctx = document.getElementById('grafico1');
-
-  // Testes com variáveis
-  let labelsX = ["Dia 1", "Dia 2", "Dia 3", "Dia 4", "Dia 5", "Dia 6", "Dia 7"];
-
-  let valores = [10, 20, 30, 40, 50, 60, 70];
-
-  new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: labelsX,
-      datasets: [{
-        label: `Centímetros`,
-        data: valores,
-        borderWidth: 1
-      }]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
-    }
-  });
