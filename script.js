@@ -71,6 +71,19 @@ async function buscarDados() {
     // atuliza o gráfico
     grafico.data.labels = labelsX;
     grafico.data.datasets[0].data = valores;
+
+    grafico.data.datasets[0].backgroundColor = valores.map(function(v) {
+      if (v <= 10) {
+        return 'red';
+
+      } else if (v <= 20) {
+        return 'yellow';
+
+      } else {
+        return 'green';
+      }
+    });
+
     grafico.update();
 
     MostrouErro = false;
