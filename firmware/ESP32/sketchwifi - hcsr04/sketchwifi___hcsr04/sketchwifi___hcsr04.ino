@@ -3,12 +3,12 @@
 #include <NimBLEDevice.h>
 
 // Pinos dos componentes
-#define TRIG_PIN    26
-#define ECHO_PIN    14
-#define BUZZER_PIN  25
-#define LED1        18
-#define LED2        22
-#define LED3        23
+#define TRIG_PIN 32
+#define ECHO_PIN 33
+#define BUZZER_PIN 25
+#define LED1 18
+#define LED2 22
+#define LED3 23
 
 // Configurações do Wi-Fi
 const char* ssid_ap     = "RX580 eu te amo";
@@ -57,9 +57,11 @@ void taskSensor(void * parameter) {
     distanciaReal = duracao * 0.0343 / 2;
     distanciaSimulada = (int)distanciaReal; // sincroniza com a variável do Wi-Fi e BLE
 
+/*
     Serial.print("Distancia: ");
     Serial.print(distanciaReal);
     Serial.println(" cm");
+*/
 
     // LEDs acendem conforme o nível de perigo
     digitalWrite(LED1, HIGH);
@@ -80,7 +82,7 @@ void taskSensor(void * parameter) {
     }
 
     // Desliga o buzzer após 5 segundos (duração do bip)
-    if (buzzerAtivo && millis() - tempoBuzzer >= 5000) {
+    if (buzzerAtivo && millis() - tempoBuzzer >= 2000) {
       digitalWrite(BUZZER_PIN, LOW);
       buzzerAtivo = false;
     }
@@ -197,15 +199,15 @@ void setup() {
   server.begin();
 
 
-/*
   // Inicia as tasks nos dois cores
   xTaskCreatePinnedToCore(taskSensor, "Sensor", 10000, NULL, 1, NULL, 1); // core 1
   xTaskCreatePinnedToCore(taskBLE,    "BLE",    20000, NULL, 1, NULL, 0); // core 0
 }
-*/
 
- xTaskCreatePinnedToCore(taskBLE, "BLE", 20000, NULL, 1, NULL, 0);
+/*
+  xTaskCreatePinnedToCore(taskBLE, "BLE", 20000, NULL, 1, NULL, 0);
 }
+*/
 
 // Mantém o servidor Wi-Fi ativo
 void loop() {

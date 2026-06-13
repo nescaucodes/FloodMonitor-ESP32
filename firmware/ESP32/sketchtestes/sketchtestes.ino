@@ -1,5 +1,5 @@
-#define TRIG_PIN 26
-#define ECHO_PIN 14
+#define TRIG_PIN 32
+#define ECHO_PIN 33
 #define BUZZER_PIN 25
 #define LED1 18
 #define LED2 22
