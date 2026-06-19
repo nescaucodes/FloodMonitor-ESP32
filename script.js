@@ -90,10 +90,10 @@ async function buscarDados() {
     grafico.data.datasets[0].data = valores;
 
     grafico.data.datasets[0].backgroundColor = valores.map(function(v) {
-      if (v <= 10) {
+      if (v < 11) {
         return 'red';
 
-      } else if (v <= 20) {
+      } else if (v < 18) {
         return 'yellow';
 
       } else {

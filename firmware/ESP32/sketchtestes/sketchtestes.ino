@@ -1,9 +1,9 @@
 #define TRIG_PIN 32
 #define ECHO_PIN 33
 #define BUZZER_PIN 25
-#define LED1 18
-#define LED2 22
-#define LED3 23
+#define LED1 18  // Led Verde 
+#define LED2 22  // Led Amerelo
+#define LED3 23  // Led Vermelho 
 
 void setup() {
   Serial.begin(115200);
@@ -36,29 +36,28 @@ void loop() {
   Serial.print(distancia);
   Serial.println(" cm");
 
-  // delay(500);
+  // Apaga todos os LEDs antes de decidir qual acender
+  digitalWrite(LED1, LOW);
+  digitalWrite(LED2, LOW);
+  digitalWrite(LED3, LOW);
 
-  // Se estiver a menos de 12 cm
-  if (distancia > 0 && distancia < 11) {
-    digitalWrite(BUZZER_PIN, HIGH);
-    delay(5000); // duração do bip
+  if (distancia >= 18) {
+    // Rio em nível normal
+    digitalWrite(LED1, HIGH);
     digitalWrite(BUZZER_PIN, LOW);
 
-    delay(1900); // completa os 2 segundos
+  } else if (distancia >= 11) {
+    // Rio subindo, atenção
+    digitalWrite(LED2, HIGH);
+    digitalWrite(BUZZER_PIN, LOW);
 
-  } else {
-    delay(100);
+  } else if (distancia > 0 && distancia < 11) {
+    // Nível crítico, no limite da ponte
+    digitalWrite(LED3, HIGH);
+    digitalWrite(BUZZER_PIN, HIGH);
+    delay(500); // bipe curto
+    digitalWrite(BUZZER_PIN, LOW);
   }
 
-  digitalWrite(LED1, HIGH);
   delay(500);
-  digitalWrite(LED1, LOW);
-
-  digitalWrite(LED2, HIGH);
-  delay(500);
-  digitalWrite(LED2, LOW);
-
-  digitalWrite(LED3, HIGH);
-  delay(500);
-  digitalWrite(LED3, LOW);
 }

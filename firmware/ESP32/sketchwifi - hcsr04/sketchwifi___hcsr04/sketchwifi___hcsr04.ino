@@ -4,14 +4,14 @@
 
 // Pinos dos componentes
 #define TRIG_PIN 32
-#define ECHO_PIN 33
+#define ECHO_PIN 27
 #define BUZZER_PIN 25
 #define LED1 18
 #define LED2 22
 #define LED3 23
 
 // Configurações do Wi-Fi
-const char* ssid_ap     = "RX580 eu te amo";
+const char* ssid_ap     = "Monitor De Enchente";
 const char* password_ap = "12345678";
 
 // Porta padrão HTTP (80)
@@ -63,29 +63,28 @@ void taskSensor(void * parameter) {
     Serial.println(" cm");
 */
 
-    // LEDs acendem conforme o nível de perigo
+    // Apaga todos os LEDs antes de decidir qual acender
+  digitalWrite(LED1, LOW);
+  digitalWrite(LED2, LOW);
+  digitalWrite(LED3, LOW);
+
+  if (distanciaReal>= 18) {
+    // Rio em nível normal
     digitalWrite(LED1, HIGH);
-    delay(500);
-    digitalWrite(LED1, LOW);
+    digitalWrite(BUZZER_PIN, LOW);
+
+  } else if (distanciaReal >= 11) {
+    // Rio subindo, atenção
     digitalWrite(LED2, HIGH);
-    delay(500);
-    digitalWrite(LED2, LOW);
+    digitalWrite(BUZZER_PIN, LOW);
+
+  } else if (distanciaReal > 0 && distanciaReal < 11) {
+    // Nível crítico, no limite da ponte
     digitalWrite(LED3, HIGH);
-    delay(500);
-    digitalWrite(LED3, LOW);
-
-    // Se estiver a menos de 11 cm, ativa o buzzer sem bloquear
-    if (distanciaReal > 0 && distanciaReal < 11 && !buzzerAtivo) {
-      digitalWrite(BUZZER_PIN, HIGH);
-      tempoBuzzer = millis(); // registra o momento de ativação
-      buzzerAtivo = true;
-    }
-
-    // Desliga o buzzer após 5 segundos (duração do bip)
-    if (buzzerAtivo && millis() - tempoBuzzer >= 2000) {
-      digitalWrite(BUZZER_PIN, LOW);
-      buzzerAtivo = false;
-    }
+    digitalWrite(BUZZER_PIN, HIGH);
+    delay(500); // bipe curto
+    digitalWrite(BUZZER_PIN, LOW);
+  }
 
     vTaskDelay(pdMS_TO_TICKS(100)); // lê o sensor a cada 100ms
   }
